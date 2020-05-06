@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title> Aim Tell - Quiz </title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>  
+   <style type="text/css">
+        .table{
+		   margin-top:70px;
+		}
+		.table td:first-child {
+		   font-weight:bold;
+		}
+   </style>
+   <script>
+      $(document).ready(function() {
+	    /*
+		   function type: Event Handler,
+		   description  : 'Load Data' Click Event handler,
+		   params       : None,
+		   return       : None			
+		*/
+		$('#loadData').click(function() {
+		    $.ajax({
+			    type: "GET",
+				datatype: 'application/json',				
+				headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                },
+				url: "https://aimtell.com/files/sites.json",				
+				crossOrigin: true,
+				success: function(data) {
+                    var tableData = "";
+	                var rows=data.sites;
+					
+					// Generated table body from json data
+                    for(var i=0; i<data.count; i++)
+	                { 
+	                    tableData += "<tr><td>"+rows[i].id+"</td><td>"+rows[i].name+"</td><td>"+rows[i].url+"</td></tr>";		
+	                }
+					
+	                //Updates table body with result
+	                $("#jsonData").html(tableData);
+				},
+				error: function(xhr, status, error) {
+				    //Generates error string
+				    var errData = '<tr><td colspan="3">Internal Error: Unable to get data. </td></tr>';
+					errData+= '<tr><td colspan="3"> Error: '+xhr.responseText+'</td></tr>';
+					
+					//Updates table body with error
+				    $("#jsonData").html(errData);
+				}
+			});	
+		
+		});
+	  });
+   </script>
+</head>
+<body>
+<div class='container'>
+    <h1 class='text-center'>Sample Table</h1>
+	<p>I have created this page to get data from "http://aimtell.com/files/sites.json" and displayed below.</p>
+	
+	<button id="loadData" type="button" class="btn btn-primary pull-right">Load Data</button>
+	<table class="table table-nonfluid">
+	   <thead>
+	       <tr>
+		       <th class="font-weight-bold">id</th>
+			   <th class="font-weight-bold">name</th>
+			   <th class="font-weight-bold">url</th>
+		   </tr>
+       </thead>
+       <tbody id="jsonData">
+       </tbody>
+	 </table>     
+	</div>
+</div>
+</body>   
