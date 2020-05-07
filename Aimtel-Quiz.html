@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title> Aim Tell - Quiz </title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>  
+   <link type="text/css" rel="stylesheet" href="style.css">
+   <script type="text/javascript" src="loadData.js" ></script> 
+</head>
+<body>
+<div class='container'>
+    <h1 class='text-center'>Sample Table</h1>
+	<p>I have created this page to get data from "http://aimtell.com/files/sites.json" and displayed below.</p>
+	
+	<button id="loadData" type="button" class="btn btn-primary pull-right">Load Data</button>
+	<table class="table table-nonfluid">
+	   <thead>
+	       <tr>
+		       <th class="font-weight-bold">id</th>
+			   <th class="font-weight-bold">name</th>
+			   <th class="font-weight-bold">url</th>
+		   </tr>
+       </thead>
+       <tbody id="jsonData">
+       </tbody>
+	 </table>     
+	</div>
+</div>
+</body>   
