@@ -2,7 +2,7 @@
 	  
 	    /*
 		   function type: Event Handler,
-		   description  : Load Data Click Event handler,
+		   description  : 'Load Data' Click Event handler,
 		   params       : None,
 		   return       : None			
 		*/		
